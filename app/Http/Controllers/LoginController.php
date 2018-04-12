@@ -10,6 +10,7 @@ class LoginController extends Controller
     public function index(Request $request){
         if($request->session()->has('currentUser')){
             $user = DB::table('users')->where('username', $request->session()->get('currentUser'))->first();
+            // $user = DB::table('users')->where('email', $request->session()->get('currentUser'))->first();
             if($user->admin == "true"){
                 return redirect('/admin');
             }

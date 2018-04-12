@@ -18,16 +18,16 @@ class DatabaseSeeder extends Seeder
     // }
     public function run()
     {
-        // $items = [
+        $items = [
             
-        //     ['id' => 1, 'title' => 'Administrator (can create other users)',],
-        //     ['id' => 2, 'title' => 'Simple user',],
+            ['id' => 1, 'title' => 'Administrator (can create other users)',],
+            ['id' => 2, 'title' => 'Simple user',],
 
-        // ];
+        ];
 
-        // foreach ($items as $item) {
-        //     \App\Role::create($item);
-        // }
+        foreach ($items as $item) {
+            \App\Role::create($item);
+        }
         
         $items = [
             

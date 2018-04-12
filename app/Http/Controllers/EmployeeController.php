@@ -9,9 +9,9 @@ class EmployeeController extends Controller
 {
     public function index(Request $request){
         if($request->session()->has('currentUser')){
-            $username = $request->session()->get('currentUser');
-            $user = DB::table('employees')->where('username', $username)->first();
-
+            $name = $request->session()->get('currentUser');
+            $user = DB::table('users')->where('name', $name)->first(); //if we have unique names means?
+                // return '$user';
             if($user->admin == "true"){
                 return view('admin/admin', ['user' => $user]);
             }
@@ -21,6 +21,7 @@ class EmployeeController extends Controller
         }
         else{
             return view('errors/unauthorized');
+            // return 'good';
         }
     }
 }

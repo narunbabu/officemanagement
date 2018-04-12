@@ -20,7 +20,7 @@
                 @include('layouts.topnavbar')
                 <h2>Expense Categories</h2>
     <!--here we create form for new user-->
-                {!! Form::Open(array('route' => 'admin.expense_categories.store','method' => 'POST')) !!}
+                {!! Form::Open(array('route' => 'expense_categories.store','method' => 'POST')) !!}
                 @csrf
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -30,7 +30,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12 form-group">
-                                {!! Form::label('name', trans('quickadmin.expense-category.fields.name').'*', ['class' => 'control-label']) !!}
+                                {!! Form::label('name', trans('Name').'*', ['class' => 'control-label']) !!}
                                 {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                                 <p class="help-block"></p>
                                 @if($errors->has('name'))
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger']) !!}
+                {!! Form::submit(trans('save'), ['class' => 'btn btn-danger']) !!}
                 {!! Form::close() !!}
             </div>
     </body>

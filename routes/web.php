@@ -94,7 +94,8 @@ Route::post('/admin/attendance/byUsername','AttendanceController@searchByUsernam
 
 
 //************************Expense_categories Route Start********************
-Route::get('/admin/expense_categories','ExpensesCategoriesController@index');
-// Route::get('/admin/expense_categories','ExpensesCategoriesController@create');
+// Route::group(['namespace' => '\App\Controllers'], function(){});
+// Route::get('/admin/expense_categories','Admin\ExpenseCategoriesController@index');
+// Route::get('/admin/expense_categories','Admin\ExpensesCategoriesController@create');
 // Route::post('/admin/expense_categories','ExpensesCategoriesController@store');
-// Route::resource('/admin/expense_categories', 'ExpensesCategoriesController');
+Route::resource('/admin/expense_categories','Admin\ExpenseCategoriesController');
