@@ -28,33 +28,33 @@
 					        <th>Operation</th>
 					    </tr>
 					    <tbody id="myTable">
-					        @foreach ($employees as $employee)
+					        @foreach ($users as $user)
 					            <tr>
 					            	<td>
-					                    {{ $employee->name }}
+					                    {{ $user->name }}
 					                </td>
 					                <td>
-					                    {{ $employee->username }}
+					                    {{ $user->username }}
 					                </td>
 					                <td>
-					                    {{ $employee->position }}
+					                    {{ $user->position }}
 					                </td>
 					                <td>
-					                    {{ $employee->email }}
+					                    {{ $user->email }}
 					                </td>
 					                <td>
-										<a href="/admin/employee/details/{{ $employee->id }}">Details</a> |
+										<a href="/admin/employee/details/{{ $user->id }}">Details</a> |
 					                 
-					                    <a href="/admin/employee/edit/{{ $employee->id }}">Edit</a> | 
+					                    <a href="/admin/employee/edit/{{ $user->id }}">Edit</a> | 
 					                
-					                    <a href="/admin/employee/delete/{{ $employee->id }}">Delete</a>
+					                    <a href="/admin/employee/delete/{{ $user->id }}">Delete</a>
 					                </td>
 					            </tr>
 					        @endforeach
 					    </tbody>
 					</table>
 					<br>
-					<button class="btn btn-info block m-b" onclick="exportTableToCSV('employees.csv')">Export To CSV File</button>
+					<button class="btn btn-info block m-b" onclick="exportTableToCSV('users.csv')">Export To CSV File</button>
                 </center>
             </div>
         </div>

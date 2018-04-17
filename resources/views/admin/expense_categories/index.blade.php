@@ -1,62 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-        <title>Admin</title>
-
-        @include('layouts.css')
-        @include('layouts.js')
-    </head>
-
-     <body>
-        <div id="wrapper" class="Index">
-            @include('layouts.navbar')
-
-            <div id="page-wrapper" class="gray-bg">
-                @include('layouts.topnavbar')
-				<h2>Expense Categories</h2>
-				<a href="#" class="btn btn-success">Add new</a>
-				<hr/> -->
-				<!-- here we write some code -->
-
-				<!-- <div class="panel panel-default">
-					<div class="panel-heading">
-						List
-					</div>
-					<div class="panel-body table-responsive">
-						<table class="table table-bordered table-striped">
-							<thead>
-								<tr>
-									<th>Name</th>
-								</tr>
-							</thead>
-							<tbody><td colspan="7">No entries in table</td></tbody>
-						</table>
-					</div>
-				</div>
-            </div>
-        </div>
-
-        @include('layouts.footer')
-    </body>
-</html> -->
-
-<!-- <script>
-	$(document).ready(function () {
-	    $("#myInput").on("keyup", function () {
-	        var value = $(this).val().toLowerCase();
-	        $("#myTable tr").filter(function () {
-	            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-	        });
-	    });
-	});
-</script> -->
-<!-- @inject('request', 'Illuminate\Http\Request') -->
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -78,6 +19,39 @@
 
             <div id="page-wrapper" class="gray-bg">
                 @include('layouts.topnavbar')
+
+				<!-- Content Wrapper. Contains page content -->
+				<div class="content-wrapper">
+        			<!-- Main content -->
+        			<section class="content">
+						@if(isset($siteTitle))
+							<h3 class="page-title">
+								{{ $siteTitle }}
+							</h3>
+						@endif
+
+            			<div class="row">
+							<div class="col-md-12">
+
+								@if (Session::has('message'))
+									<div class="alert alert-info">
+										<p>{{ Session::get('message') }}</p>
+									</div>
+								@endif
+								@if ($errors->count() > 0)
+									<div class="alert alert-danger">
+										<ul class="list-unstyled">
+											@foreach($errors->all() as $error)
+												<li>{{ $error }}</li>
+											@endforeach
+										</ul>
+									</div>
+								@endif
+
+							</div>
+            			</div>
+        			</section>
+				</div>
 				<h2>Expense Categories</h2><br>
 				<a href="expense_categories/create" class="btn btn-success">Add new</a>
     				<!-- @can('expense_category_create')
@@ -92,7 +66,7 @@
             				@endif
         				@endif
     				</p>
-    				 @endcan --><!--why it is not working-->
+    				 @endcan-->   <!--why it is not working -->
 
     				<div class="panel panel-default">
         				<div class="panel-heading">List</div>
@@ -147,13 +121,15 @@
     				</div>
 			</div>
 		</div>
+		@include('layouts.javascripts')
+		@include('layouts.footer')
 	</body>
 </html>
 
 
-    <!-- <script>
+    <script>
         @can('expense_category_delete')
             window.route_mass_crud_entries_destroy = '{{ route('admin.expense_categories.mass_destroy') }}';
         @endcan
 
-    </script> -->
+    </script>

@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Roles;
+use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreRoles;
+use App\Http\Requests\Admin\UpdateRoles;
 
 class RolesController extends Controller
 {
@@ -14,7 +18,14 @@ class RolesController extends Controller
      */
     public function index()
     {
-        //
+        if (! Gate::allows('role_access')) {
+            return abort(401);
+        }
+
+
+                $roles = Role::all();
+
+        return view('admin.roles.index', compact('roles'));
     }
 
     /**
@@ -24,18 +35,29 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+        if (! Gate::allows('role_create')) {
+            return abort(401);
+        }
+        return view('admin.roles.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
+     * 
+     *@param  \App\Http\Requests\StoreRoles  $request
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRoles $request)
     {
-        //
+        if (! Gate::allows('role_create')) {
+            return abort(401);
+        }
+        $role = Role::create($request->all());
+
+
+
+        return redirect()->route('admin.roles.index');
     }
 
     /**
@@ -44,9 +66,16 @@ class RolesController extends Controller
      * @param  \App\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function show(Roles $roles)
+    public function show($id)
     {
-        //
+        if (! Gate::allows('role_view')) {
+            return abort(401);
+        }
+        $users = \App\User::where('role_id', $id)->get();
+
+        $role = Role::findOrFail($id);
+
+        return view('admin.roles.show', compact('role', 'users'));
     }
 
     /**
@@ -55,21 +84,33 @@ class RolesController extends Controller
      * @param  \App\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function edit(Roles $roles)
+    public function edit($id)
     {
-        //
+        if (! Gate::allows('role_edit')) {
+            return abort(401);
+        }
+        $role = Role::findOrFail($id);
+
+        return view('admin.roles.edit', compact('role'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     * 
+     *@param  \App\Http\Requests\UpdateRolesRequest  $request
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Roles $roles)
+    public function update(UpdateRoles $request, $id)
     {
-        //
+        if (! Gate::allows('role_edit')) {
+            return abort(401);
+        }
+        $role = Role::findOrFail($id);
+        $role->update($request->all());
+
+        return redirect()->route('admin.roles.index');
     }
 
     /**
@@ -78,8 +119,14 @@ class RolesController extends Controller
      * @param  \App\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Roles $roles)
+    public function destroy($id)
     {
-        //
+        if (! Gate::allows('role_delete')) {
+            return abort(401);
+        }
+        $role = Role::findOrFail($id);
+        $role->delete();
+
+        return redirect()->route('admin.roles.index');
     }
 }

@@ -12,10 +12,10 @@
 
 	<ul class="nav nav-second-level collapse in">
 	    <li class=""><a href="/admin/expense_categories">Expense Categories</a></li>
-	    <li class=""><a href="#">Income Categories</a></li>
-		<li class=""><a href="#">Income</a></li>
-		<li class=""><a href="#">Expenses</a></li>
-		<li class=""><a href="#">Monthly report</a></li>
+	    <li class=""><a href="/admin/income_categories">Income Categories</a></li>
+		<li class=""><a href="/admin/incomes">Income</a></li>
+		<li class=""><a href="/admin/expenses">Expenses</a></li>
+		<li class=""><a href="/admin/monthly_reports">Monthly report</a></li>
 	</ul>
 </li>
 

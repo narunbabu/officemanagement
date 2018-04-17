@@ -47,5 +47,6 @@
                 {!! Form::close() !!}
             </div>
         </div>
+        @include('layouts.javascripts')
     </body>
 </html>

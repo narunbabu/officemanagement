@@ -98,5 +98,6 @@
                 </div>
             </div>
         </div>
+        @include('layouts.javascripts')
     </body>
 </html>

@@ -99,3 +99,7 @@ Route::post('/admin/attendance/byUsername','AttendanceController@searchByUsernam
 // Route::get('/admin/expense_categories','Admin\ExpensesCategoriesController@create');
 // Route::post('/admin/expense_categories','ExpensesCategoriesController@store');
 Route::resource('/admin/expense_categories','Admin\ExpenseCategoriesController');
+Route::resource('/admin/income_categories','Admin\IncomeCategoriesController');
+Route::resource('/admin/incomes','Admin\IncomesController');
+Route::resource('/admin/expenses','Admin\ExpensesController');
+Route::resource('/admin/monthly_reports','Admin\MonthlyReportsController');

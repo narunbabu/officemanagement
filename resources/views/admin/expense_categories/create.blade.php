@@ -45,5 +45,6 @@
                 {!! Form::submit(trans('save'), ['class' => 'btn btn-danger']) !!}
                 {!! Form::close() !!}
             </div>
+            @include('layouts.javascripts')
     </body>
 </html>

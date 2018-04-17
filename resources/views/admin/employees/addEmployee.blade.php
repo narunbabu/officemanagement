@@ -62,6 +62,16 @@
 				            	<input class="form-control" type="password" id="password" name="password" required="" placeholder="Password"></input>
 				            </div>
 				        </div>
+						<div class="form-group">
+				        	<div class="col-md-10" align="left"><label>Choose currency</label></div>
+				        	<div class="col-md-10">
+							<select class="form-control" id="currency" name="currency" >
+									<option value="1">USD</option>
+									<option value="2">EUR</option>
+									<option value="3">GBP</option>
+								</select>
+				            </div>
+				        </div>
 				        <div class="form-group">
 				            <div class="col-md-10" align="left">
 				                <input type="submit" value="Create" class="btn btn-primary block full-width m-b" />.
@@ -71,7 +81,7 @@
                 </form>
             </div>
         </div>
-
+		@include('layouts.javascripts')
         @include('layouts.footer')
     </body>
 </html>

@@ -18,7 +18,7 @@ class UserSeed extends Seeder
         ];
 
         foreach ($items as $item) {
-            \App\Employee::create($item);
+            \App\User::create($item);
         }
     }
 }
